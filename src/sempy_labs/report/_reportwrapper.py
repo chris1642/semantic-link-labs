@@ -1538,7 +1538,6 @@ class ReportWrapper:
                 obj_full = f"{table_name}.{object_name}"
                 is_agg = properties[2]
                 format_value = format_mapping.get(obj_full)
-                obj_display = obj_display_mapping.get(obj_full)
 
                 if is_agg:
                     for k, v in format_mapping.items():
@@ -1556,7 +1555,7 @@ class ReportWrapper:
                         "Sparkline": properties[4],
                         "Visual Calc": properties[3],
                         "Format": format_value,
-                        "Object Display Name": obj_display or object_name,
+                        "Object Display Name": obj_display_mapping.get(obj_full, object_name),
                     }
                 )
 
